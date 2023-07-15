@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scb::-webkit-scrollbar {
+  display: none;
+}
+
+.spinner {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.834) url("./assets/giphy.webp") center no-repeat;
+  z-index: 1;
+}
