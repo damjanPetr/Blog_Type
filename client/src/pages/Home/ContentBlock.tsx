@@ -1,6 +1,5 @@
 import { Link, useNavigation } from "react-router-dom";
 import { base_url } from "../../api/api";
-import Spinner from "../../utils/Spinner";
 
 export type Props = {
   page: number;
@@ -32,23 +31,18 @@ export default function ContentBlock({ data }: { data: Props }) {
     <>
       {navigation.state == "loading" ? <div>tueoahueoatnuhtehatnun</div> : null}
       {data.results && navigation.state === "idle" && (
-        <div className="scb flex overflow-auto">
+        <div className="scb flex overflow-auto bg-slate-700 p-4">
           {data.results.map((item: movie) => {
             return (
-              <Link to={`/movie${item.id}/details`}>
-                <div key={item.id} className="">
+              <Link key={item.id} to={`/${item.id}/details`}>
+                <div className="">
                   <div className="scb ml-4 w-max">
                     <img
                       src={base_url + item.poster_path}
                       alt={item.title + "image"}
-                      className="w-[100px]"
+                      className="w-[100px] rounded-lg"
                     />
                   </div>
-                  {/* <div key={item.id} className="">
-                  <h3 className="text-lg text-white ">{item.title}</h3>
-                  <div className="h-[80%] overflow-auto"></div>
-                  <div className="genres flex gap-3 p-2 text-gray-300"></div>
-                </div> */}
                 </div>
               </Link>
             );
