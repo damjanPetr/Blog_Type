@@ -29,9 +29,9 @@ const router = createBrowserRouter([
             path: "/:movieId/details",
             element: <MovieDetail />,
             loader: async ({ params }) => {
-              const detail = (await movieDetailLoader({
-                id: params.movieId,
-              })) as MovieDetails;
+              const detail = (await movieDetailLoader(
+                params.movieId
+              )) as MovieDetails;
 
               return detail;
             },

@@ -1,14 +1,18 @@
+import { useState, useEffect } from "react";
+
 import { Link, useNavigation } from "react-router-dom";
+
 import { base_url } from "../../api/api";
+import Spinner from "../../utils/Spinner";
 
 export type Props = {
   page: number;
-  results: movie[];
+  results: Movie[];
   total_pages: number;
   total_results: number;
 };
 
-export interface movie {
+export interface Movie {
   adult: boolean;
   backdrop_path: string;
   genre_ids: Array<number>;
@@ -26,29 +30,39 @@ export interface movie {
 }
 
 export default function ContentBlock({ data }: { data: Props }) {
-  const navigation = useNavigation();
+  const [IsLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setIsLoading(false);
+    return () => {
+      setIsLoading(false);
+    };
+  }, [IsLoading]);
+
   return (
-    <>
-      {navigation.state == "loading" ? <div>tueoahueoatnuhtehatnun</div> : null}
-      {data.results && navigation.state === "idle" && (
-        <div className="scb flex overflow-auto bg-slate-700 p-4">
-          {data.results.map((item: movie) => {
-            return (
-              <Link key={item.id} to={`/${item.id}/details`}>
-                <div className="">
-                  <div className="scb ml-4 w-max">
-                    <img
-                      src={base_url + item.poster_path}
-                      alt={item.title + "image"}
-                      className="w-[100px] rounded-lg"
-                    />
-                  </div>
+    <div className="scb flex overflow-auto bg-slate-700 p-4">
+      {!IsLoading ? (
+        data.results.map((item: Movie) => {
+          return (
+            <Link
+              key={item.id}
+              to={`/${item.id}/details`}
+              className="hover:scale-110"
+            >
+              <div className="">
+                <div className="scb ml-4 w-max">
+                  <img
+                    src={base_url + item.poster_path}
+                    alt={item.title + "image"}
+                    className="w-[140px] rounded-lg"
+                  />
                 </div>
-              </Link>
-            );
-          })}
-        </div>
+              </div>
+            </Link>
+          );
+        })
+      ) : (
+        <Spinner />
       )}
-    </>
+    </div>
   );
 }

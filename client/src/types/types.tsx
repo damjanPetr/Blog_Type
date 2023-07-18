@@ -1,3 +1,5 @@
+import { Movie } from "../pages/Home/ContentBlock";
+
 export type MovieDetails = {
   adult: boolean;
   backdrop_path: null | string;
@@ -29,4 +31,184 @@ export type MovieDetails = {
   video: boolean;
   vote_average: number;
   vote_count: number;
+};
+
+export type MovieKeywords = {
+  id: number;
+  keywords: string[];
+};
+
+export type MovieVideos = {
+  id: number;
+  results: {
+    iso_639_1: string;
+    iso_3166_1: string;
+    name: string;
+    key: string;
+    site: string;
+    size: number;
+    type: string;
+    official: true;
+    published_at: string;
+    id: string;
+  }[];
+};
+export type MovieAltTitles = { id: number; titles: string[] };
+export type MovieTranslations = {
+  id: number;
+  translations: {
+    iso_3166_1: string;
+    iso_639_1: string;
+    name: string;
+    english_name: string;
+    data: {
+      homepage: string;
+      overview: string;
+      runtime: number;
+      tagline: string;
+      title: string;
+    };
+  };
+}[];
+
+export type MovieSimilar = {
+  page: number;
+  results: Movie[];
+};
+export type MovieReviews = {
+  id: number;
+  page: number;
+  resoults: {
+    author: string;
+    author_details: {
+      name: "";
+      username: string;
+      avatar_path: null | string;
+      rating: null | number;
+    };
+    content: string;
+    created_at: string;
+    id: string;
+    updated_at: string;
+    url: string;
+  }[];
+};
+
+export type MovieReleaseDate = {
+  id: number;
+  results: {
+    iso_3166_1: string;
+    release_dates: {
+      certification: string;
+      descriptors: string[];
+      iso_639_1: string;
+      note: string;
+      release_date: string;
+      type: 1;
+    }[];
+  }[];
+};
+export type MovieWatchProviders = {
+  id: number;
+  results: {
+    [key: string]: {
+      link: string;
+      rent: {
+        logo_path: string;
+        provider_id: number;
+        provider_name: string;
+        display_priority: number;
+      }[];
+    };
+  };
+};
+export type MovieRecommendations = {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+};
+
+export type MovieLists = {
+  id: number;
+  page: number;
+  resurts: {
+    description: string;
+    favorite_count: number;
+    id: number;
+    item_count: number;
+    iso_639_1: string;
+    list_type: string;
+    name: string;
+    poster_path: null | string;
+  }[];
+};
+
+export type MovieImages<
+  T extends {
+    aspect_ratio: number;
+    height: number;
+    iso_639_1: string;
+    file_path: string;
+    vote_average: number;
+    vote_count: number;
+    width: number;
+  }
+> = {
+  backdrops: T[];
+  id: number;
+  logos: T[];
+  posters: T[];
+};
+
+export type MovieExternalId = {
+  id: number;
+  imdb_id: string;
+  wikidata_id: null | string;
+  facebook_id: null | string;
+  instagram_id: null | string;
+  twitter_id: null | string;
+};
+
+export type MovieCredits<
+  T extends {
+    adult: false;
+    gender: 1;
+    id: number;
+    known_for_department: string;
+    name: string;
+    original_name: string;
+    popularity: number;
+    profile_path: string;
+    cast_id: number;
+    character: string;
+    credit_id: string;
+    order: number;
+  }
+> = {
+  id: number;
+  cast: T[];
+  crew: T[];
+};
+
+export type MovieChanges = {
+  changes: {
+    key: string;
+    items: {
+      id: string;
+      action: string;
+      time: string;
+      iso_639_1: string;
+      iso_3166_1: string;
+      value: {
+        certification: string;
+        descriptors: string[];
+        iso_3166_1: string;
+        iso_639_1: string;
+        note: string;
+        release_date: string;
+        type: number;
+      }[];
+    };
+  }[];
 };

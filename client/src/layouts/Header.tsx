@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import { useAuth } from "../context/Auth";
 
 export default function Nav() {
@@ -7,7 +7,9 @@ export default function Nav() {
     <div>
       <header className="flex items-center p-1">
         <div className="logo ml-4">
-          <h1>MovieTemplate</h1>
+          <Link to="/">
+            <h1>MovieTemplate</h1>
+          </Link>
         </div>
         <nav className="ml-auto mr-4">
           <ul>
