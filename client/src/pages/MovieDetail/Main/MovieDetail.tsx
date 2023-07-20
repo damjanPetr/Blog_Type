@@ -1,10 +1,17 @@
 import {} from "react";
-
-import { useLoaderData } from "react-router-dom";
-import { apiFetchOptions, apiURL, base_url, base_urlBg } from "../../api/api";
-import { MovieDetails } from "../../types/types";
-import { toHoursAndMinutes } from "../../utils/func";
+import { useLoaderData, Link } from "react-router-dom";
+import {
+  apiFetchOptions,
+  apiURL,
+  base_url,
+  base_urlBg,
+} from "../../../api/api";
+import { MovieDetails, MovieImages, MovieVideos } from "../../../types/types";
+import { toHoursAndMinutes } from "../../../utils/func";
 import MediaBar from "./comp/MediaBar";
+import SeriesCast from "./comp/SeriesCast";
+import SeasonSection from "./comp/SeasonSection";
+import Recommendations from "./comp/Recommendations";
 
 export async function movieDetailLoader<T>(id: T) {
   const response = await fetch(apiURL + `/movie/${id}`, apiFetchOptions);
@@ -12,32 +19,192 @@ export async function movieDetailLoader<T>(id: T) {
 }
 
 export default function MovieDetail() {
-  const movieDetail = useLoaderData() as MovieDetails;
+  const { movieDetail /* mediaBarData */ } = useLoaderData() as {
+    movieDetail: MovieDetails;
+  };
 
   const { hours, minutes } = toHoursAndMinutes(movieDetail.runtime);
 
   return (
-    <div className=" border">
+    <div className=" ">
       <header className="flex justify-center bg-slate-100">
         <nav className="p-2">
           <ul className="flex gap-4 capitalize text-stone-500">
-            <li className="rounded-md p-2 hover:bg-slate-500 hover:text-white">
+            <li className="group relative rounded-md  p-2 hover:bg-slate-500 ">
               overview
+              <div className="absolute top-[calc(100%+0.2rem)] hidden w-full rounded-md bg-white p-2 group-hover:block">
+                <ul>
+                  <li className="p-2 ">
+                    <Link to={"../details"} relative="path">
+                      Main
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../alternative-titles"} relative="path">
+                      Alternative Titles
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../cast-crew"} relative="path">
+                      Cast & Crew
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../release-date"} relative="path">
+                      Release Date
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../translations"} relative="path">
+                      Translations
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../changes"} relative="path">
+                      Changes
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../report"} relative="path">
+                      Report
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../edit"} relative="path">
+                      Edit
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </li>
-            <li className="rounded-md p-2 hover:bg-slate-500 hover:text-white">
+            <li className="group rounded-md p-2 hover:bg-slate-500">
               Media
+              <div className="absolute hidden bg-white p-2 group-hover:block">
+                <ul>
+                  <li className="p-2 ">
+                    <Link to={"../images/backdrops"} relative="path">
+                      Backdrops{" "}
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../images/logos"} relative="path">
+                      Logos
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../images/posters"} relative="path">
+                      Posters
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../videos"} relative="path">
+                      Videos
+                    </Link>
+                    <div className="">
+                      <ul>
+                        <li className="p-2 ">
+                          <Link to={"../videos/trailers"} relative="path">
+                            Trailers
+                          </Link>
+                        </li>
+                        <li className="p-2 ">
+                          <Link to={"../videos/teasers"} relative="path">
+                            Teasers
+                          </Link>
+                        </li>
+                        <li className="p-2 ">
+                          <Link to={"../"} relative="path"></Link>
+                        </li>
+                        <li className="p-2 ">
+                          <Link to={"../videos/clips"} relative="path">
+                            Clips
+                          </Link>
+                        </li>
+                        <li className="p-2 ">
+                          <Link to={"../"} relative="path"></Link>
+                        </li>
+                        <li className="p-2 ">
+                          <Link
+                            to={"../videos/behind-the-scenes"}
+                            relative="path"
+                          >
+                            Behind The Scenes
+                          </Link>
+                        </li>
+                        <li className="p-2 ">
+                          <Link to={"../videos/featurettes"} relative="path">
+                            Featurettes
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </li>
-            <li className="rounded-md p-2 hover:bg-slate-500 hover:text-white">
+            <li className="group rounded-md  p-2 hover:bg-slate-500 ">
               Fandom
+              <div className="absolute hidden bg-white p-2 group-hover:block">
+                <ul>
+                  <li className="p-2 ">
+                    <Link to={"../fandom/behind-the-scenes"} relative="path">
+                      Behind The Scenes
+                    </Link>
+                    <div className="">
+                      <ul>
+                        <li className="p-2 ">
+                          <Link to={"../fandom/discuss"} relative="path">
+                            overview
+                          </Link>
+                        </li>
+                        <li className="p-2 ">
+                          <Link to={"../fandom/general"} relative="path">
+                            General
+                          </Link>
+                        </li>
+                        <li className="p-2 ">
+                          <Link to={"../fandom/content-issues"} relative="path">
+                            Content Issues
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"../reviews"} relative="path">
+                      Reviews
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </li>
-            <li className="rounded-md p-2 hover:bg-slate-500 hover:text-white">
+            <li className="group rounded-md p-2 hover:bg-slate-500  ">
               Share
+              <div className="absolute hidden bg-white p-2 group-hover:block">
+                <ul>
+                  <li className="p-2 ">
+                    <Link to={"/"} relative="path">
+                      Share Link
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"/"} relative="path">
+                      Facebook
+                    </Link>
+                  </li>
+                  <li className="p-2 ">
+                    <Link to={"/"} relative="path">
+                      Tweet
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </nav>
       </header>
       <main className="">
-        <div
+        <article
           className=" bg-cover bg-center"
           style={{
             backgroundImage: `url(${base_urlBg + movieDetail.backdrop_path})`,
@@ -53,7 +220,7 @@ export default function MovieDetail() {
               />
             </div>
             {/* Content*/}
-            <div className="content flex flex-col p-4">
+            <section className="content flex flex-col p-4">
               <div className=" p-2">
                 <div className="mb-10 mt-4 ">
                   <h2 className="text-3xl">
@@ -72,7 +239,7 @@ export default function MovieDetail() {
                     </span>
                   </p>
                   <div className="flex">
-                    {movieDetail.genres.map((item, index) => (
+                    {movieDetail.genres.map((item) => (
                       <span
                         key={item.id}
                         className="mr-4 rounded-lg bg-stone-200 p-1"
@@ -90,7 +257,13 @@ export default function MovieDetail() {
                 </div>
               </div>
               {movieDetail.belongs_to_collection && (
-                <p>{movieDetail.belongs_to_collection}</p>
+                <div className="" key={movieDetail.belongs_to_collection.id}>
+                  <h3 className="text-xl">
+                    {movieDetail.belongs_to_collection.name}
+                  </h3>
+                  {/* <p>{movieDetail.belongs_to_collection.backdrop_path}</p> */}
+                  {/* <p>{movieDetail.belongs_to_collection.poster_path}</p> */}
+                </div>
               )}
               {movieDetail.homepage && <a href={movieDetail.homepage}></a>}
               {movieDetail.imdb_id && (
@@ -149,13 +322,18 @@ export default function MovieDetail() {
               </p>
               <p>Budget: {movieDetail.budget}</p>
               <p>Total revenue: {movieDetail.revenue}</p>
-            </div>
+            </section>
           </div>
-        </div>
-        <section className="container mx-auto flex p-4">
-          <div className="min-w-[70%]">
-            <MediaBar data="" />
-          </div>
+        </article>
+        <article className="container mx-auto flex  p-4">
+          <section className="max-h-[500px] min-w-[70%]">
+            <MediaBar movieId={movieDetail.id} />
+            <SeriesCast />
+            <SeasonSection />
+            <Recommendations />
+          </section>
+
+          <section></section>
           <aside className="min-w-[30%]  p-2 shadow-lg">
             <div className="">
               <h3 className="mb-2">Made in :</h3>
@@ -189,7 +367,7 @@ export default function MovieDetail() {
               </ul>
             </div>
           </aside>
-        </section>
+        </article>
       </main>
     </div>
   );

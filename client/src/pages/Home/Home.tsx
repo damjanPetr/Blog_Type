@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLoaderData, useNavigation } from "react-router-dom";
 import { apiFetchOptions, apiURL } from "../../api/api";
 import ContentBlock, { Props } from "./ContentBlock";
@@ -16,21 +16,17 @@ export async function homeLoader(page: number): Promise<Props> {
 
 export default function Home() {
   const navigation = useNavigation();
-  const initialData = useLoaderData() as Props;
-  const [page, setPage] = useState(2);
-  const [data, setData] = useState<Props[]>([initialData]);
-  console.log("🚀 ~ file: Home.tsx:20 ~ Home ~ data:", data);
+  const mytarget = useRef<HTMLAnchorElement>(null);
+  let id = 0;
+  const initialData = useLoaderData() as Props[];
+  const [page, setPage] = useState(5);
+  const [data, setData] = useState<Props[]>(initialData);
 
   function handleScroll() {
     const { scrollTop, scrollHeight, clientHeight, offsetHeight } =
       document.documentElement;
-    // console.group("label");
-    // console.log("scroll top " + scrollTop);
-    // console.log("client h " + clientHeight);
-    // console.log("scroll h " + scrollHeight);
-    // console.log("offset h " + offsetHeight);
-    // console.groupEnd();
-    if (scrollTop + clientHeight > scrollHeight - offsetHeight * 0.2) {
+
+    if (scrollTop + clientHeight > scrollHeight - offsetHeight * 0.3) {
       homeLoader(page).then((arg) => {
         setData([...data, arg]);
       });
@@ -39,10 +35,9 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log("mount");
     window.addEventListener("scroll", handleScroll);
+
     return () => {
-      console.log("unmoount");
       window.removeEventListener("scroll", handleScroll);
     };
   });
@@ -50,14 +45,21 @@ export default function Home() {
   // return <div className="h-screen bg-purple-600"></div>;
   // }
   return (
-    <div onScroll={handleScroll} className="h-screen">
+    <main onScroll={handleScroll} className="h-screen">
       {data.map((items) => {
         if (navigation.state === "loading") {
           return <Spinner key={`spinner ${items.page}`} />;
         } else {
-          return <ContentBlock key={items.page} data={items}></ContentBlock>;
+          return (
+            <ContentBlock
+              key={items.page}
+              data={items}
+              dataid={id++}
+              ref={mytarget}
+            ></ContentBlock>
+          );
         }
       })}
-    </div>
+    </main>
   );
 }

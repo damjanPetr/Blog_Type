@@ -3,7 +3,12 @@ import { Movie } from "../pages/Home/ContentBlock";
 export type MovieDetails = {
   adult: boolean;
   backdrop_path: null | string;
-  belongs_to_collection: null | string;
+  belongs_to_collection: null | {
+    id: number;
+    name: string;
+    poster_path: string;
+    backdrop_path: string;
+  };
   budget: number;
   genres: { id: number; name: string }[];
   homepage: string;
@@ -53,6 +58,24 @@ export type MovieVideos = {
     id: string;
   }[];
 };
+
+export type MovieImages<
+  T = {
+    aspect_ratio: number;
+    height: number;
+    iso_639_1: string;
+    file_path: string;
+    vote_average: number;
+    vote_count: number;
+    width: number;
+  }
+> = {
+  backdrops: T[];
+  id: number;
+  logos: T[];
+  posters: T[];
+};
+
 export type MovieAltTitles = { id: number; titles: string[] };
 export type MovieTranslations = {
   id: number;
@@ -75,6 +98,7 @@ export type MovieSimilar = {
   page: number;
   results: Movie[];
 };
+
 export type MovieReviews = {
   id: number;
   page: number;
@@ -142,23 +166,6 @@ export type MovieLists = {
     name: string;
     poster_path: null | string;
   }[];
-};
-
-export type MovieImages<
-  T extends {
-    aspect_ratio: number;
-    height: number;
-    iso_639_1: string;
-    file_path: string;
-    vote_average: number;
-    vote_count: number;
-    width: number;
-  }
-> = {
-  backdrops: T[];
-  id: number;
-  logos: T[];
-  posters: T[];
 };
 
 export type MovieExternalId = {

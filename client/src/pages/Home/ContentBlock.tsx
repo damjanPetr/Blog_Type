@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { Link, useNavigation } from "react-router-dom";
 
@@ -29,24 +29,41 @@ export interface Movie {
   vote_count: number;
 }
 
-export default function ContentBlock({ data }: { data: Props }) {
+export default function ContentBlock({
+  data,
+  dataid,
+  ref,
+}: {
+  data: Props;
+  dataid: number;
+  ref: HTMLAnchorElement | Ref<HTMLAnchorElement>;
+}) {
   const [IsLoading, setIsLoading] = useState(true);
+  const target = useRef<HTMLAnchorElement>(null);
+  let id = 0;
+
   useEffect(() => {
     setIsLoading(false);
     return () => {
       setIsLoading(false);
     };
   }, [IsLoading]);
+  //
 
   return (
-    <div className="scb flex overflow-auto bg-slate-700 p-4">
+    <div
+      className="scb flex overflow-y-scroll scroll-auto bg-slate-700 p-4"
+      data-id={dataid}
+    >
       {!IsLoading ? (
         data.results.map((item: Movie) => {
           return (
             <Link
+              ref={ref}
               key={item.id}
               to={`/${item.id}/details`}
               className="hover:scale-110"
+              data-index={id++}
             >
               <div className="">
                 <div className="scb ml-4 w-max">

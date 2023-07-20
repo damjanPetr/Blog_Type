@@ -2,8 +2,14 @@
 
 ## Client
 
--[ ] create the database
+- [ ]Finish all the pages skeleton
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
 
 ## Server
 
-- [ ]
+- [ ] create the database
