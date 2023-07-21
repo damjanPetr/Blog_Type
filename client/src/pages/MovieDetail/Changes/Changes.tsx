@@ -1,4 +1,13 @@
-type Props = {};
-export default function Changes({}: Props) {
-  return <div>Changes</div>;
+import { useLoaderData } from "react-router-dom";
+import Banner from "../../components/Banner";
+
+export default function Changes() {
+  const data = useLoaderData();
+  return (
+    <>
+      <Banner />
+      <div>Changes</div>
+      <>{JSON.stringify(data)}</>
+    </>
+  );
 }

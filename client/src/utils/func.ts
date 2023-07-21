@@ -1,7 +1,7 @@
-async function getFlag(flagCode: string) {
-  const response = await fetch(`https://flagcdn.com/16x12/${flagCode}.png`);
-  const data = await response.json();
-  console.log(data);
+export function getFlag(flagCode: string) {
+  flagCode.toLowerCase();
+  const flagstr = `https://flagcdn.com/24x18/${flagCode.toLowerCase()}.png`;
+  return flagstr;
 }
 
 export function toHoursAndMinutes(totalMinutes: number) {
@@ -9,4 +9,14 @@ export function toHoursAndMinutes(totalMinutes: number) {
   const minutes = totalMinutes % 60;
 
   return { hours, minutes };
+}
+
+export function getFullCountryName(arg: string) {
+  // const countryTitle = new Intl.Locale(arg);
+  // console.log(
+  // "🚀 ~ file: func.ts:16 ~ getFullCountryName ~ countryTitle:",
+  // countryTitle
+  // );
+
+  return new Intl.DisplayNames(arg, { type: "region" }).of(arg);
 }

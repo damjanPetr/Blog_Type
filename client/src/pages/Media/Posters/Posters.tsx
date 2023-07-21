@@ -1,4 +1,11 @@
+import Banner from "../../components/Banner";
+
 type Props = {};
 export default function Posters({}: Props) {
-  return <div>Posters</div>;
+  return (
+    <>
+      <Banner />
+      <div>Posters</div>
+    </>
+  );
 }

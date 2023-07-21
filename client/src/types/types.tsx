@@ -76,7 +76,14 @@ export type MovieImages<
   posters: T[];
 };
 
-export type MovieAltTitles = { id: number; titles: string[] };
+export type MovieAltTitles = {
+  id: number;
+  titles: {
+    iso_3166_1: string;
+    title: string;
+    type: string;
+  }[];
+};
 export type MovieTranslations = {
   id: number;
   translations: {

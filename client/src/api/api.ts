@@ -1,6 +1,6 @@
 // import dotenv from "dotenv";
 // dotenv.config();
-const apiFetchOptions = {
+export const apiFetchOptions = {
   method: "GET",
   headers: {
     accept: "application/json",
@@ -8,12 +8,13 @@ const apiFetchOptions = {
   },
 };
 
-const base_url = "http://image.tmdb.org/t/p/w500";
-const base_urlBg = "http://image.tmdb.org/t/p/original";
-
-const apiURL = "https://api.themoviedb.org/3";
-
-export { apiFetchOptions, apiURL, base_url, base_urlBg };
+export const base_url = "http://image.tmdb.org/t/p/w500";
+export const still_92 = "http://image.tmdb.org/t/p/w92";
+export const still_182 = "http://image.tmdb.org/t/p/w185";
+export const still_300 = "http://image.tmdb.org/t/p/w300";
+export const still_original = "http://image.tmdb.org/t/p/w500";
+export const base_urlBg = "http://image.tmdb.org/t/p/original";
+export const apiURL = "https://api.themoviedb.org/3";
 
 /* Fetch FUNCITOs */
 

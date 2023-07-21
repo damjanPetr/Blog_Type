@@ -29,175 +29,138 @@ export default function MovieDetail() {
     <div className=" ">
       <header className="flex justify-center bg-slate-100">
         <nav className="p-2">
-          <ul className="flex gap-4 capitalize text-stone-500">
-            <li className="group relative rounded-md  p-2 hover:bg-slate-500 ">
+          <ul className="blue flex gap-4 capitalize">
+            <li className="relative rounded-md p-2 hover:bg-slate-500">
               overview
-              <div className="absolute top-[calc(100%+0.2rem)] hidden w-full rounded-md bg-white p-2 group-hover:block">
-                <ul>
-                  <li className="p-2 ">
-                    <Link to={"../details"} relative="path">
-                      Main
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../alternative-titles"} relative="path">
-                      Alternative Titles
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../cast-crew"} relative="path">
-                      Cast & Crew
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../release-date"} relative="path">
-                      Release Date
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../translations"} relative="path">
-                      Translations
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../changes"} relative="path">
-                      Changes
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../report"} relative="path">
-                      Report
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../edit"} relative="path">
-                      Edit
-                    </Link>
-                  </li>
-                </ul>
+              <div className="absolute top-[calc(100%+0.1rem)] flex w-max flex-col items-start justify-start gap-4 rounded-lg bg-white px-2 py-2  text-sm ">
+                <Link
+                  to={"../details"}
+                  relative="path"
+                  className="w-full p-2 hover:bg-stone-300/50"
+                >
+                  Main
+                </Link>
+                <Link
+                  to={"../alternative-titles"}
+                  relative="path"
+                  className="w-full p-2 hover:bg-stone-300/50"
+                >
+                  Alternative Titles
+                </Link>
+                <Link
+                  to={"../cast-crew"}
+                  relative="path"
+                  className="w-full p-2 hover:bg-stone-300/50"
+                >
+                  Cast & Crew
+                </Link>
+                <Link
+                  to={"../release-date"}
+                  relative="path"
+                  className="w-full p-2 hover:bg-stone-300/50"
+                >
+                  Release Date
+                </Link>
+                <Link
+                  to={"../translations"}
+                  relative="path"
+                  className="w-full p-2 hover:bg-stone-300/50"
+                >
+                  Translations
+                </Link>
+                <Link
+                  to={"../changes"}
+                  relative="path"
+                  className="w-full p-2 hover:bg-stone-300/50"
+                >
+                  Changes
+                </Link>
+                <Link
+                  to={"../report"}
+                  relative="path"
+                  className="w-full p-2 hover:bg-stone-300/50"
+                >
+                  Report
+                </Link>
+                <Link
+                  to={"../edit"}
+                  relative="path"
+                  className="w-full p-2 hover:bg-stone-300/50"
+                >
+                  Edit
+                </Link>
               </div>
             </li>
             <li className="group rounded-md p-2 hover:bg-slate-500">
               Media
               <div className="absolute hidden bg-white p-2 group-hover:block">
-                <ul>
-                  <li className="p-2 ">
-                    <Link to={"../images/backdrops"} relative="path">
-                      Backdrops{" "}
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../images/logos"} relative="path">
-                      Logos
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../images/posters"} relative="path">
-                      Posters
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../videos"} relative="path">
-                      Videos
-                    </Link>
-                    <div className="">
-                      <ul>
-                        <li className="p-2 ">
-                          <Link to={"../videos/trailers"} relative="path">
-                            Trailers
-                          </Link>
-                        </li>
-                        <li className="p-2 ">
-                          <Link to={"../videos/teasers"} relative="path">
-                            Teasers
-                          </Link>
-                        </li>
-                        <li className="p-2 ">
-                          <Link to={"../"} relative="path"></Link>
-                        </li>
-                        <li className="p-2 ">
-                          <Link to={"../videos/clips"} relative="path">
-                            Clips
-                          </Link>
-                        </li>
-                        <li className="p-2 ">
-                          <Link to={"../"} relative="path"></Link>
-                        </li>
-                        <li className="p-2 ">
-                          <Link
-                            to={"../videos/behind-the-scenes"}
-                            relative="path"
-                          >
-                            Behind The Scenes
-                          </Link>
-                        </li>
-                        <li className="p-2 ">
-                          <Link to={"../videos/featurettes"} relative="path">
-                            Featurettes
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
+                <Link to={"../images/backdrops"} relative="path">
+                  Backdrops{" "}
+                </Link>
+                <Link to={"../images/logos"} relative="path">
+                  Logos
+                </Link>
+                <Link to={"../images/posters"} relative="path">
+                  Posters
+                </Link>
+                <Link to={"../videos"} relative="path">
+                  Videos
+                </Link>
+                <div className="">
+                  <Link to={"../videos/trailers"} relative="path">
+                    Trailers
+                  </Link>
+                  <Link to={"../videos/teasers"} relative="path">
+                    Teasers
+                  </Link>
+                  <Link to={"../"} relative="path"></Link>
+                  <Link to={"../videos/clips"} relative="path">
+                    Clips
+                  </Link>
+                  <Link to={"../"} relative="path"></Link>
+                  <Link to={"../videos/behind-the-scenes"} relative="path">
+                    Behind The Scenes
+                  </Link>
+                  <Link to={"../videos/featurettes"} relative="path">
+                    Featurettes
+                  </Link>
+                </div>
               </div>
             </li>
             <li className="group rounded-md  p-2 hover:bg-slate-500 ">
               Fandom
               <div className="absolute hidden bg-white p-2 group-hover:block">
-                <ul>
-                  <li className="p-2 ">
-                    <Link to={"../fandom/behind-the-scenes"} relative="path">
-                      Behind The Scenes
-                    </Link>
-                    <div className="">
-                      <ul>
-                        <li className="p-2 ">
-                          <Link to={"../fandom/discuss"} relative="path">
-                            overview
-                          </Link>
-                        </li>
-                        <li className="p-2 ">
-                          <Link to={"../fandom/general"} relative="path">
-                            General
-                          </Link>
-                        </li>
-                        <li className="p-2 ">
-                          <Link to={"../fandom/content-issues"} relative="path">
-                            Content Issues
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"../reviews"} relative="path">
-                      Reviews
-                    </Link>
-                  </li>
-                </ul>
+                <Link to={"../fandom/behind-the-scenes"} relative="path">
+                  Behind The Scenes
+                </Link>
+                <div className="">
+                  <Link to={"../fandom/discuss"} relative="path">
+                    overview
+                  </Link>
+                  <Link to={"../fandom/general"} relative="path">
+                    General
+                  </Link>
+                  <Link to={"../fandom/content-issues"} relative="path">
+                    Content Issues
+                  </Link>
+                </div>
+                <Link to={"../reviews"} relative="path">
+                  Reviews
+                </Link>
               </div>
             </li>
             <li className="group rounded-md p-2 hover:bg-slate-500  ">
               Share
               <div className="absolute hidden bg-white p-2 group-hover:block">
-                <ul>
-                  <li className="p-2 ">
-                    <Link to={"/"} relative="path">
-                      Share Link
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"/"} relative="path">
-                      Facebook
-                    </Link>
-                  </li>
-                  <li className="p-2 ">
-                    <Link to={"/"} relative="path">
-                      Tweet
-                    </Link>
-                  </li>
-                </ul>
+                <Link to={"/"} relative="path">
+                  Share Link
+                </Link>
+                <Link to={"/"} relative="path">
+                  Facebook
+                </Link>
+                <Link to={"/"} relative="path">
+                  Tweet
+                </Link>
               </div>
             </li>
           </ul>

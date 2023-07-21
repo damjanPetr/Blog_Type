@@ -143,7 +143,7 @@ export default function MediaBar({ movieId }: { movieId: number }) {
         </nav>
       </header>
       <div
-        className="flex h-full  items-center overflow-x-auto bg-gray-200 p-4 "
+        className="always flex h-full   items-center overflow-x-auto bg-gray-200  p-4 "
         ref={scrollTarget}
       >
         {state.video &&

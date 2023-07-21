@@ -1,4 +1,11 @@
+import Banner from "../../components/Banner";
+
 type Props = {};
 export default function ReleaseDate({}: Props) {
-  return <div>ReleaseDate</div>;
+  return (
+    <>
+      <Banner />
+      <div>ReleaseDate</div>
+    </>
+  );
 }

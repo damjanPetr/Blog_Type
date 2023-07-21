@@ -1,4 +1,11 @@
+import Banner from "../../components/Banner";
+
 type Props = {};
 export default function CastCrew({}: Props) {
-  return <div>CastCrew</div>;
+  return (
+    <>
+      <Banner />
+      <div>CastCrew</div>
+    </>
+  );
 }

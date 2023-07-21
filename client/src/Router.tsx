@@ -1,40 +1,40 @@
 import { createBrowserRouter, defer } from "react-router-dom";
 import ErrorPage from "./ErrorPage.tsx";
-import { AuthProvider } from "./context/Auth.tsx";
-import Header from "./layouts/Header.tsx";
-import Home, { homeLoader } from "./pages/Home/Home.tsx";
-import MovieDetail, {
-  movieDetailLoader,
-} from "./pages/MovieDetail/Main/MovieDetail.tsx";
-import { MovieAltTitles, MovieDetails } from "./types/types.tsx";
-import Main from "./layouts/Main.tsx";
-import AlternativeTitles from "./pages/MovieDetail/AlternativeTitles/AlternativeTitles.tsx";
-import CastCrew from "./pages/MovieDetail/CastCrew/CastCrew.tsx";
-import ReleaseDate from "./pages/MovieDetail/ReleaseDate/ReleaseDate.tsx";
-import Translations from "./pages/MovieDetail/Translations/Translations.tsx";
-import Changes from "./pages/MovieDetail/Changes/Changes.tsx";
-import Report from "./pages/MovieDetail/Report/Report.tsx";
-import Edit from "./pages/MovieDetail/Edit/Edit.tsx";
-import Backdrops from "./pages/Media/Backdrops/Backdrops.tsx";
-import Logos from "./pages/Media/Logos/Logos.tsx";
-import Posters from "./pages/Media/Posters/Posters.tsx";
-import Clips from "./pages/Media/Videos/Clips/Clips.tsx";
-import BehindTheScenes from "./pages/Media/Videos/BehindTheScenes/BehindTheScenes.tsx";
-import Featuretess from "./pages/Media/Videos/Featuretess/Featuretess.tsx";
-import Teasers from "./pages/Media/Videos/Teasers/Teasers.tsx";
-import Trailers from "./pages/Media/Videos/Trailers/Trailers.tsx";
-import Overview from "./pages/Discussion/Overview/Overview.tsx";
-import General from "./pages/Discussion/General/General.tsx";
-import Reviews from "./pages/Reviews/Reviews.tsx";
-import ContentIssues from "./pages/Discussion/ContentIssues/ContentIssues.tsx";
-import Login from "./pages/Login/Login.tsx";
 import {
+  apiFetchOptions,
   getAltTitles,
   getChannges,
   getCredits,
   getMovieReleaseDate,
   getTranslations,
 } from "./api/api.ts";
+import { AuthProvider } from "./context/Auth.tsx";
+import Main from "./layouts/Main.tsx";
+import ContentIssues from "./pages/Discussion/ContentIssues/ContentIssues.tsx";
+import General from "./pages/Discussion/General/General.tsx";
+import Overview from "./pages/Discussion/Overview/Overview.tsx";
+import Home, { homeLoader as getDetails } from "./pages/Home/Home.tsx";
+import Login from "./pages/Login/Login.tsx";
+import Backdrops from "./pages/Media/Backdrops/Backdrops.tsx";
+import Logos from "./pages/Media/Logos/Logos.tsx";
+import Posters from "./pages/Media/Posters/Posters.tsx";
+import BehindTheScenes from "./pages/Media/Videos/BehindTheScenes/BehindTheScenes.tsx";
+import Clips from "./pages/Media/Videos/Clips/Clips.tsx";
+import Featuretess from "./pages/Media/Videos/Featuretess/Featuretess.tsx";
+import Teasers from "./pages/Media/Videos/Teasers/Teasers.tsx";
+import Trailers from "./pages/Media/Videos/Trailers/Trailers.tsx";
+import AlternativeTitles from "./pages/MovieDetail/AlternativeTitles/AlternativeTitles.tsx";
+import CastCrew from "./pages/MovieDetail/CastCrew/CastCrew.tsx";
+import Changes from "./pages/MovieDetail/Changes/Changes.tsx";
+import Edit from "./pages/MovieDetail/Edit/Edit.tsx";
+import MovieDetail, {
+  movieDetailLoader,
+} from "./pages/MovieDetail/Main/MovieDetail.tsx";
+import ReleaseDate from "./pages/MovieDetail/ReleaseDate/ReleaseDate.tsx";
+import Report from "./pages/MovieDetail/Report/Report.tsx";
+import Translations from "./pages/MovieDetail/Translations/Translations.tsx";
+import Reviews from "./pages/Reviews/Reviews.tsx";
+import { MovieAltTitles, MovieDetails } from "./types/types.tsx";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
               const startArray = [];
 
               for (let index = 1; index < 5; index++) {
-                const results = await homeLoader(index);
+                const results = await getDetails(index);
                 startArray.push(results);
               }
 
@@ -83,7 +83,10 @@ const router = createBrowserRouter([
               const altTitles = (await getAltTitles(
                 params.movieId
               )) as MovieAltTitles;
-              return altTitles;
+              const details = (await movieDetailLoader(
+                params.movieId
+              )) as MovieDetails;
+              return { details, altTitles };
             },
           },
           {
@@ -114,8 +117,9 @@ const router = createBrowserRouter([
           {
             path: "/:movieId/changes",
             element: <Changes />,
-            loader: async ({ params }) => {
-              const data = await getChannges(params.movieId);
+            loader: ({ params }) => {
+              const data = getChannges(params.movieId);
+              return data;
             },
           },
           {

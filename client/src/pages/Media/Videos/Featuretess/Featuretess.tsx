@@ -1,4 +1,11 @@
+import Banner from "../../../components/Banner";
+
 type Props = {};
 export default function Featuretess({}: Props) {
-  return <div>Featuretess</div>;
+  return (
+    <>
+      <Banner />
+      <div>Featuretess</div>
+    </>
+  );
 }
