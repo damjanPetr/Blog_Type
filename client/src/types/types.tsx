@@ -98,8 +98,8 @@ export type MovieTranslations = {
       tagline: string;
       title: string;
     };
-  };
-}[];
+  }[];
+};
 
 export type MovieSimilar = {
   page: number;
@@ -214,15 +214,17 @@ export type MovieChanges = {
       time: string;
       iso_639_1: string;
       iso_3166_1: string;
-      value: {
-        certification: string;
-        descriptors: string[];
-        iso_3166_1: string;
-        iso_639_1: string;
-        note: string;
-        release_date: string;
-        type: number;
-      }[];
-    };
+      original_value?: {
+        // cast_id: number;
+        // character: string;
+        // credit_id: string;
+        // order: number;
+        // person_id: string;
+        [x: string]: unknown;
+      };
+      value?: {
+        [x: string]: unknown;
+      };
+    }[];
   }[];
 };

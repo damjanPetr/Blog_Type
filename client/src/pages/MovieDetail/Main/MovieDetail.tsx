@@ -76,7 +76,7 @@ export default function MovieDetail() {
                 >
                   Changes
                 </Link>
-                <Link
+                {/* <Link
                   to={"../report"}
                   relative="path"
                   className="w-full p-2 hover:bg-stone-300/50"
@@ -89,7 +89,7 @@ export default function MovieDetail() {
                   className="w-full p-2 hover:bg-stone-300/50"
                 >
                   Edit
-                </Link>
+                </Link> */}
               </div>
             </li>
             <li className="group relative rounded-md p-2 hover:bg-slate-500">

@@ -5,6 +5,7 @@ import {
   getAltTitles,
   getChanges,
   getCredits,
+  getImages,
   getMovieReleaseDate,
   getTranslations,
 } from "./api/api.ts";
@@ -118,16 +119,18 @@ const router = createBrowserRouter([
             path: "/:movieId/translations",
             element: <Translations />,
             loader: async ({ params }) => {
+              const details = await movieDetailLoader(params.movieId);
               const data = await getTranslations(params.movieId);
-              return data;
+              return { data, details };
             },
           },
           {
             path: "/:movieId/changes",
             element: <Changes />,
-            loader: ({ params }) => {
-              const data = getChanges(params.movieId);
-              return data;
+            loader: async ({ params }) => {
+              const data = await getChanges(params.movieId);
+              const details = await movieDetailLoader(params.movieId);
+              return { data, details };
             },
           },
           {
@@ -142,6 +145,12 @@ const router = createBrowserRouter([
           {
             path: "/:movieId/images/backdrops",
             element: <Backdrops />,
+            loader: async ({ params }) => {
+              const data = await getImages(params.movieId);
+              const details = await movieDetailLoader(params.movieId);
+
+              return { details, data };
+            },
           },
           {
             path: "/:movieId/images/logos",

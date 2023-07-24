@@ -18,7 +18,13 @@ export function getFullCountryName(arg: string) {
   // countryTitle
   // );
 
-  return new Intl.DisplayNames(arg, { type: "region" }).of(arg);
+  return new Intl.DisplayNames(arg, {
+    type: "region",
+    // style: "long",
+    // languageDisplay: "dialect",
+    // fallback: "code",
+    // localeMatcher: "best fit",
+  }).of(arg);
 }
 
 export function getCountryLanguage(arg: string) {
@@ -28,5 +34,16 @@ export function getCountryLanguage(arg: string) {
   // countryTitle
   // );
 
-  return new Intl.DisplayNames(arg, { type: "language" }).of(arg);
+  return new Intl.DisplayNames(undefined, { type: "language" }).of(arg);
+}
+
+export function getSideCountryName(arg: string) {
+  // const ln = new Intl.DisplayNames(arg, { type: "region" }).of(arg);
+  const ln = arg.toLocaleLowerCase();
+
+  // const region = arg.toLocaleUpperCase();
+  // const region = new Intl.DisplayNames(arg, { type: "language" }).of(arg);
+  let region = new Intl.DisplayNames(undefined, { type: "region" }).of(arg);
+  region = region?.toLocaleLowerCase();
+  return `${ln}-${region}`;
 }

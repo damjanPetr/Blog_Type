@@ -1,10 +1,11 @@
 import { getFullCountryName } from "../../utils/func";
 import { filterArrayTitles } from "../MovieDetail/AlternativeTitles/AlternativeTitles";
 import { FilteredReleaseDate } from "../MovieDetail/ReleaseDate/ReleaseDate";
+import { filteredTranslations } from "../MovieDetail/Translations/Translations";
 
 type Props = {
   asideTitle: string;
-  data: filterArrayTitles | FilteredReleaseDate;
+  data: filterArrayTitles | FilteredReleaseDate | filteredTranslations;
 };
 function Aside({ data, asideTitle }: Props) {
   const dataObject = Object.entries(data);
@@ -17,7 +18,7 @@ function Aside({ data, asideTitle }: Props) {
           <span className="p-2 text-xl text-gray-400 "></span>
         </div>
         <div className=" shadow-md">
-          {dataObject.map((start, index) => {
+          {dataObject.sort().map((start, index) => {
             const item = start[1];
 
             // const newArray = altTitles.titles.filter(

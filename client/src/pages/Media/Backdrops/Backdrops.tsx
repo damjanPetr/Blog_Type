@@ -1,11 +1,20 @@
+import { useLoaderData } from "react-router-dom";
+import { MovieDetails, MovieImages } from "../../../types/types";
 import Banner from "../../components/Banner";
+import AsideMedia from "../Comp/AsideMedia";
 
-type Props = {};
-export default function Backdrops({}: Props) {
+export default function Backdrops() {
+  const { data, details } = useLoaderData() as {
+    data: MovieImages;
+    details: MovieDetails;
+  };
+
+
   return (
     <>
-      <Banner />
-      <div>Backdrops</div>
+      <Banner movieDetail={details} />
+
+      <AsideMedia data={data} type="backdrops" />
     </>
   );
 }
