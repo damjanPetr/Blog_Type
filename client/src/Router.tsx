@@ -3,7 +3,7 @@ import ErrorPage from "./ErrorPage.tsx";
 import {
   apiFetchOptions,
   getAltTitles,
-  getChannges,
+  getChanges,
   getCredits,
   getMovieReleaseDate,
   getTranslations,
@@ -93,8 +93,14 @@ const router = createBrowserRouter([
             path: "/:movieId/cast-crew",
             element: <CastCrew />,
             loader: async ({ params }) => {
-              const castCrew = await getCredits(params.movieID);
-              return castCrew;
+              const castCrew = await getCredits(params.movieId);
+
+              const details = await movieDetailLoader(params.movieId);
+
+              return {
+                castCrew,
+                details,
+              };
             },
           },
           {
@@ -102,7 +108,9 @@ const router = createBrowserRouter([
             element: <ReleaseDate />,
             loader: async ({ params }) => {
               const data = await getMovieReleaseDate(params.movieId);
-              return data;
+              const details = await movieDetailLoader(params.movieId);
+
+              return { data, details };
             },
           },
 
@@ -118,7 +126,7 @@ const router = createBrowserRouter([
             path: "/:movieId/changes",
             element: <Changes />,
             loader: ({ params }) => {
-              const data = getChannges(params.movieId);
+              const data = getChanges(params.movieId);
               return data;
             },
           },

@@ -20,3 +20,13 @@ export function getFullCountryName(arg: string) {
 
   return new Intl.DisplayNames(arg, { type: "region" }).of(arg);
 }
+
+export function getCountryLanguage(arg: string) {
+  // const countryTitle = new Intl.Locale(arg);
+  // console.log(
+  // "🚀 ~ file: func.ts:16 ~ getFullCountryName ~ countryTitle:",
+  // countryTitle
+  // );
+
+  return new Intl.DisplayNames(arg, { type: "language" }).of(arg);
+}

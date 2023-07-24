@@ -113,7 +113,7 @@ export async function getCredits<T>(id: T) {
   return response.json();
 }
 
-export async function getChannges<T>(id: T) {
+export async function getChanges<T>(id: T) {
   const response = await fetch(
     apiURL + `/movie/${id}/changes`,
     apiFetchOptions

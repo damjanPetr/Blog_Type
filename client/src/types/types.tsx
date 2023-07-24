@@ -135,7 +135,7 @@ export type MovieReleaseDate = {
       iso_639_1: string;
       note: string;
       release_date: string;
-      type: 1;
+      type: number;
     }[];
   }[];
 };
@@ -185,7 +185,7 @@ export type MovieExternalId = {
 };
 
 export type MovieCredits<
-  T extends {
+  T = {
     adult: false;
     gender: 1;
     id: number;

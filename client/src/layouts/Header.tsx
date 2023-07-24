@@ -11,7 +11,7 @@ export default function Nav() {
       <br />
       <br />
       <br />
-      <div className="fixed top-4 w-full bg-red-800 text-white">
+      <div className="fixed top-0 w-full bg-red-800 text-white">
         {nav1.state === "loading" && (
           <progress className="h2 fixed top-0 w-full bg-red-600 text-blue-600">
             Loading
