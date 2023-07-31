@@ -17,7 +17,7 @@ export default function Banner({ movieDetail }: Props) {
               ({movieDetail.release_date.slice(0, 4)})
             </span>
           </h1>
-          <Link to={".."} className="ml-1 text-sm">
+          <Link to={"../details"} className="ml-1 text-sm">
             {"\t <-"} Go back to main
           </Link>
         </div>

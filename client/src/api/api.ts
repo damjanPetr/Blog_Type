@@ -16,6 +16,105 @@ export const still_original = "http://image.tmdb.org/t/p/w500";
 export const base_urlBg = "http://image.tmdb.org/t/p/original";
 export const apiURL = "https://api.themoviedb.org/3";
 
+export async function getPopularTv() {
+  const response = await fetch(apiURL + `/tv/popular`, apiFetchOptions);
+  const data = await response.json();
+  return data;
+}
+
+export async function getDiscoverMovies(arg: string) {
+  const response = await fetch(
+    apiURL + `/discover/movie?${arg}`,
+    apiFetchOptions
+  );
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
+
+export async function getDiscoverTV(arg: string) {
+  const response = await fetch(apiURL + `/discover/tv?${arg}`, apiFetchOptions);
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
+
+export async function getPopular(page?: number) {
+  if (page != undefined) {
+    const response = await fetch(
+      apiURL + `/movie/popular?language=en_US&page=${page}`,
+      apiFetchOptions
+    );
+    const data = await response.json();
+    return data;
+  } else {
+    const response = await fetch(apiURL + `/movie/popular`, apiFetchOptions);
+    const data = await response.json();
+    return data;
+  }
+}
+
+export async function getTrending(week = false) {
+  if (week === false) {
+    const response = await fetch(apiURL + `/trending/all/day`, apiFetchOptions);
+    const data = await response.json();
+    return data;
+  } else {
+    const response = await fetch(
+      apiURL + `/trending/all/week`,
+      apiFetchOptions
+    );
+    const data = await response.json();
+    return data;
+  }
+}
+
+export async function getUpcoming(page?: number) {
+  if (page != undefined) {
+    const response = await fetch(
+      apiURL + `/movie/upcoming?language=en_US&page=${page}`,
+      apiFetchOptions
+    );
+    const data = await response.json();
+    return data;
+  } else {
+    const response = await fetch(apiURL + `/movie/upcoming`, apiFetchOptions);
+    const data = await response.json();
+    return data;
+  }
+}
+export async function getNowPlaying(page?: number) {
+  if (page != undefined) {
+    const response = await fetch(
+      apiURL + `/movie/now_playing?language=en_US&page=${page}`,
+      apiFetchOptions
+    );
+    const data = await response.json();
+    return data;
+  } else {
+    const response = await fetch(
+      apiURL + `/movie/now_playing`,
+      apiFetchOptions
+    );
+    const data = await response.json();
+    return data;
+  }
+}
+export async function getTopRated(page?: number) {
+  if (page != undefined) {
+    const response = await fetch(
+      apiURL + `/movie/top_rated?language=en_US&page=${page}`,
+      apiFetchOptions
+    );
+    const data = await response.json();
+    return data;
+  } else {
+    const response = await fetch(apiURL + `/movie/top_rated`, apiFetchOptions);
+    const data = await response.json();
+    return data;
+  }
+}
+
 /* Fetch FUNCITOs */
 
 export async function getKeywords<T>(id: T) {

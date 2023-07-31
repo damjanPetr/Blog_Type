@@ -17,14 +17,17 @@ export function getFullCountryName(arg: string) {
   // "🚀 ~ file: func.ts:16 ~ getFullCountryName ~ countryTitle:",
   // countryTitle
   // );
-
-  return new Intl.DisplayNames(arg, {
-    type: "region",
-    // style: "long",
-    // languageDisplay: "dialect",
-    // fallback: "code",
-    // localeMatcher: "best fit",
-  }).of(arg);
+  if (arg === "null") {
+    return "No Language";
+  } else {
+    return new Intl.DisplayNames(undefined, {
+      type: "region",
+      // style: "long",
+      // languageDisplay: "dialect",
+      // fallback: "code",
+      // localeMatcher: "best fit",
+    }).of(arg);
+  }
 }
 
 export function getCountryLanguage(arg: string) {
@@ -33,7 +36,9 @@ export function getCountryLanguage(arg: string) {
   // "🚀 ~ file: func.ts:16 ~ getFullCountryName ~ countryTitle:",
   // countryTitle
   // );
-
+  if (arg === "null") {
+    return "No Language";
+  }
   return new Intl.DisplayNames(undefined, { type: "language" }).of(arg);
 }
 

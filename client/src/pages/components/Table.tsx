@@ -33,7 +33,6 @@ function Table({ data }: Props) {
                 id={`goLink${item[0]}`}
               >
                 <p className="">{getSideCountryName(item[0])}</p>
-                {/* <p className="">{item[1][0].iso_639_1}</p> */}
                 <BiEdit />
               </caption>
             ) : (

@@ -1,5 +1,16 @@
 import { Movie } from "../pages/Home/ContentBlock";
 
+export type MovieWithMedaType = Movie & {
+  media_type: string;
+};
+export type TVProps = {
+  page: number;
+  results: TVbase[];
+  total_pages: number;
+  total_results: number;
+};
+
+export type TVbase = Movie;
 export type MovieDetails = {
   adult: boolean;
   backdrop_path: null | string;
@@ -109,7 +120,7 @@ export type MovieSimilar = {
 export type MovieReviews = {
   id: number;
   page: number;
-  resoults: {
+  results: {
     author: string;
     author_details: {
       name: "";

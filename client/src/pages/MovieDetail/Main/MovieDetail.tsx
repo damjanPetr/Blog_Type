@@ -1,4 +1,3 @@
-import { BiSolidRightArrow } from "react-icons/bi";
 import {} from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import {
@@ -13,6 +12,7 @@ import MediaBar from "./comp/MediaBar";
 import SeriesCast from "./comp/SeriesCast";
 import SeasonSection from "./comp/SeasonSection";
 import Recommendations from "./comp/Recommendations";
+import Nav from "../../components/Nav";
 
 export async function movieDetailLoader<T>(id: T) {
   const response = await fetch(apiURL + `/movie/${id}`, apiFetchOptions);
@@ -28,231 +28,10 @@ export default function MovieDetail() {
 
   return (
     <div className=" ">
-      <header className="flex justify-center bg-slate-100">
-        <nav className="p-2">
-          <ul className="blue flex gap-4 capitalize">
-            <li className="group relative rounded-md p-2 hover:bg-slate-500">
-              overview
-              <div className="absolute top-[calc(100%+0.1rem)] flex hidden w-max flex-col items-start justify-start gap-4 rounded-lg bg-white px-2 py-2  text-sm group-hover:flex">
-                <Link
-                  to={"../details"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Main
-                </Link>
-                <Link
-                  to={"../alternative-titles"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Alternative Titles
-                </Link>
-                <Link
-                  to={"../cast-crew"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Cast & Crew
-                </Link>
-                <Link
-                  to={"../release-date"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Release Date
-                </Link>
-                <Link
-                  to={"../translations"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Translations
-                </Link>
-                <Link
-                  to={"../changes"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Changes
-                </Link>
-                {/* <Link
-                  to={"../report"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Report
-                </Link>
-                <Link
-                  to={"../edit"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Edit
-                </Link> */}
-              </div>
-            </li>
-            <li className="group relative rounded-md p-2 hover:bg-slate-500">
-              Media
-              <div className="absolute top-[calc(100%+0.1rem)] flex hidden w-max flex-col items-start justify-start gap-4 rounded-lg bg-white px-2 py-2  text-sm group-hover:flex">
-                <Link
-                  to={"../images/backdrops"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Backdrops{" "}
-                </Link>
-                <Link
-                  to={"../images/logos"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Logos
-                </Link>
-                <Link
-                  to={"../images/posters"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Posters
-                </Link>
-                <Link
-                  to={"../videos"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Videos
-                </Link>
-                <div className="">
-                  <Link
-                    to={"../videos/trailers"}
-                    relative="path"
-                    className="w-full p-2 hover:bg-stone-300/50"
-                  >
-                    Trailers
-                  </Link>
-                  <Link
-                    to={"../videos/teasers"}
-                    relative="path"
-                    className="w-full p-2 hover:bg-stone-300/50"
-                  >
-                    Teasers
-                  </Link>
-                  <Link
-                    to={"../"}
-                    relative="path"
-                    className="w-full p-2 hover:bg-stone-300/50"
-                  ></Link>
-                  <Link
-                    to={"../videos/clips"}
-                    relative="path"
-                    className="w-full p-2 hover:bg-stone-300/50"
-                  >
-                    Clips
-                  </Link>
-                  <Link
-                    to={"../"}
-                    relative="path"
-                    className="w-full p-2 hover:bg-stone-300/50"
-                  ></Link>
-                  <Link
-                    to={"../videos/behind-the-scenes"}
-                    relative="path"
-                    className="w-full p-2 hover:bg-stone-300/50"
-                  >
-                    Behind The Scenes
-                  </Link>
-                  <Link
-                    to={"../videos/featurettes"}
-                    relative="path"
-                    className="w-full p-2 hover:bg-stone-300/50"
-                  >
-                    Featurettes
-                  </Link>
-                </div>
-              </div>
-            </li>
-            <li className="group relative rounded-md p-2 hover:bg-slate-500">
-              Fandom
-              <div className="absolute top-[calc(100%+0.1rem)] flex hidden w-max flex-col items-start justify-start gap-4 rounded-lg bg-white px-2 py-2  text-sm group-hover:flex">
-                <Link
-                  to={"../fandom/behind-the-scenes"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Behind The Scenes
-                </Link>
-
-                <div className="group/1 relative">
-                  <div className="flex w-full items-center p-2 hover:bg-stone-300/50">
-                    <p>Discuss </p>
-                    <p className="ml-4">{<BiSolidRightArrow />}</p>
-                  </div>
-                  <div className="absolute left-[calc(100%+5.4rem)] top-[-100%] flex hidden w-max flex-col items-start justify-start gap-4 rounded-lg bg-white px-2 py-2  text-sm group-hover/1:flex">
-                    <Link
-                      to={"../fandom/discuss"}
-                      relative="path"
-                      className="w-full p-2 hover:bg-stone-300/50"
-                    >
-                      Overview
-                    </Link>
-                    <Link
-                      to={"../fandom/general"}
-                      relative="path"
-                      className="w-full p-2 hover:bg-stone-300/50"
-                    >
-                      General
-                    </Link>
-                    <Link
-                      to={"../fandom/content-issues"}
-                      relative="path"
-                      className="w-full p-2 hover:bg-stone-300/50"
-                    >
-                      Content Issues
-                    </Link>
-                  </div>
-                </div>
-                <Link
-                  to={"../reviews"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Reviews
-                </Link>
-              </div>
-            </li>
-            <li className="group relative rounded-md p-2  hover:bg-slate-500">
-              Share
-              <div className="absolute top-[calc(100%+0.1rem)] flex hidden w-max flex-col items-start justify-start gap-4 rounded-lg bg-white px-2 py-2  text-sm group-hover:flex">
-                <Link
-                  to={"/"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Share Link
-                </Link>
-                <Link
-                  to={"/"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Facebook
-                </Link>
-                <Link
-                  to={"/"}
-                  relative="path"
-                  className="w-full p-2 hover:bg-stone-300/50"
-                >
-                  Tweet
-                </Link>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <Nav />
       <main className="">
         <article
-          className=" bg-cover bg-center"
+          className="bg-black/40 bg-cover bg-center  bg-blend-darken"
           style={{
             backgroundImage: `url(${base_urlBg + movieDetail.backdrop_path})`,
           }}
@@ -263,7 +42,7 @@ export default function MovieDetail() {
               <img
                 src={base_url + movieDetail.poster_path}
                 alt="Movie Title Picture"
-                className="rounded-xl"
+                className="rounded-xl "
               />
             </div>
             {/* Content*/}
